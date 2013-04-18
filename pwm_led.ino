@@ -1,6 +1,6 @@
 // Timings from AB
 const uint8_t LO=4;
-const uint8_t HI=16;
+const uint8_t HI=15;
 const uint8_t MAX=19;
 const int PIN=3; // Atmel: OC2B, Arduino: 3
 const int tov2 = (1 << TOV2);
