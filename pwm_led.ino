@@ -91,7 +91,7 @@ void bang_data(uint8_t *data, int n)
   digitalWrite(PIN, LOW);
 }
 
-// Sufficient space for 5 meters
+// Sufficient space for 100 LEDs
 uint8_t tape[301];
 
 void setup()
@@ -104,19 +104,20 @@ void setup()
 }
 
 // Simple test program to test and check the color order
+// Warning: Untested on actual hardware because the computer crashed
 uint8_t offset;
 void loop()
 {
-  const int N = 4 * 60;
+  const int N = 100;
   for (int i = 0; i < N; i++) {
   int r = (i + offset) % 3 == 0;
   int g = (i + offset) % 3 == 1;
   int b = (i + offset) % 3 == 2;
-   tape[3*i] = r;
-   tape[3*i+1] = g;
-   tape[3*i+2] = b;
+   tape[3*i] = r ? 255 : 0;
+   tape[3*i+1] = g ? 255 : 0;
+   tape[3*i+2] = b ? 255 : 0;
   }
-  bang_data(tape, N);
+  bang_data(tape, 3*N);
   delay(500);
   offset++;
 }
